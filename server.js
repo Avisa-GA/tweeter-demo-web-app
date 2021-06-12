@@ -32,7 +32,7 @@ app.set('view engine', 'ejs')
 // =========================
 // MOUNT MIDDLEWARE
 // =========================
-
+app.use(express.static('public'))
 app.use(express.urlencoded( { extended: false }))
 app.use(express.json())
 app.use(methodOverride('_method'))
@@ -58,11 +58,9 @@ app.use(passport.session())
 // =======================
 // ROUTES
 // =======================
-app.use('/home', require('./controllers/home'))
-app.use('/users', require('./controllers/users'))
+app.use('/', require('./routes/index'))
+app.use('/', require('./routes/users'))
 
-// HOME ROUTES
-app.get('/', (req, res) => res.send('Welcome to Tweeter Demo App'))
 
 // ======================
 // LISTENER
