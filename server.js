@@ -58,7 +58,11 @@ app.use(passport.session())
 // =======================
 // ROUTES
 // =======================
+app.use('/home', require('./controllers/home'))
+app.use('/users', require('./controllers/users'))
 
+// HOME ROUTES
+app.get('/', (req, res) => res.send('Welcome to Tweeter Demo App'))
 
 // ======================
 // LISTENER
