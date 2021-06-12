@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 //  ? comments
 // ===============
-const commentSchema = new mongoose.Schema( {
+module.exports = new mongoose.Schema( {
     content: String,
     createdBy: {
         type: Schema.Types.ObjectId,

@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose')
-
+const commentSchema = require('./comment.js');
 
 // ? tweets
 // ===============
