@@ -1,22 +1,20 @@
 
-
 const mongoose = require('mongoose')
-const User = require('./user')
 
-const commentSchema = new Schema( {
-    content: String
-}, { timestamps: true })
 
+// ? tweets
+// ===============
 const tweetSchema = mongoose.Schema( {
-     description: String,
-     image: String,
-     emoji: String,
-     user: User,
-     comments: [commentSchema]
+    description: String,
+    image: String,
+    emoji: String,
+    comments: [commentSchema],
+    createdBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 }, {
-    timestamps: true
+   timestamps: true
 })
 
-const Tweet = mongoose.model('Tweet', tweetSchema)
-
-module.exports = Tweet
+module.exports = mongoose.model('Tweet', tweetSchema)

@@ -1,14 +1,14 @@
 
 const mongoose = require('mongoose')
-const Tweet = require('./tweet')
 
+// ? users
+// ===============
 const userSchema = new mongoose.Schema( {
     name: String,
     bio: String,
     email: String,
     avatarURL: String,
-    googleId: String,
-    tweets: [Tweet]
+    googleId: String
 }, {
     timestamps: true
 })
