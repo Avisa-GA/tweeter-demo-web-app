@@ -17,19 +17,10 @@ const app = express()
 // ==================
 // CONFIGURE MONGOOSE
 // ==================
-const mongoose = require('mongoose');
-const db = mongoose.connection;
-
-mongoose.connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-})
-
-db.on('connected', () => console.log('mongo connected'))
-db.on('error', (err) => console.log(err.message, ' is mongo connected?'))
-db.on('disconnected', () => console.log('mongo disconnected'))
+// & connect to the MongoDB with mongoose
+require('./config/database')
+// ! initialize oauth process for login requests
+require('./config/passport')
 
 // =====================
 // MIDDLEWARES
@@ -53,7 +44,7 @@ app.use(session({
 }))
 
 
-// TODO APP PASSPORT middleware here
+// TODO Add PASSPORT middleware here
 // =======================
 app.use(passport.initialize())
 app.use(passport.session())
