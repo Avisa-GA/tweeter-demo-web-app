@@ -1,5 +1,6 @@
 
 const mongoose = require('mongoose')
+const Tweet = require('./tweet')
 
 const userSchema = new mongoose.Schema( {
     name: String,
@@ -7,12 +8,7 @@ const userSchema = new mongoose.Schema( {
     email: String,
     avatarURL: String,
     googleId: String,
-    tweets: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Tweet'
-        }
-    ]
+    tweets: [Tweet]
 }, {
     timestamps: true
 })

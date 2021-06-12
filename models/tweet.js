@@ -1,15 +1,18 @@
 
 
 const mongoose = require('mongoose')
+const User = require('./user')
+
+const commentSchema = new Schema( {
+    content: String
+}, { timestamps: true })
 
 const tweetSchema = mongoose.Schema( {
      description: String,
      image: String,
      emoji: String,
-     user: {
-         type: Schema.Types.ObjectId,
-         ref: 'User'
-     }
+     user: User,
+     comments: [commentSchema]
 }, {
     timestamps: true
 })
