@@ -3,14 +3,20 @@
 <html lang="en">
 <head>
     <%- include ('./partials/head.ejs') %>
-    <title>🕊 Home</title>
+    <title>🕊 Login Page</title>
 </head>
 <body>
     <nav>
-        <div style="padding-right: 2%; padding-left: 2%;" class="nav-wrapper blue darken-3">
-          <a href="#" class="brand-logo">🕊Home</a>
+        <div class="nav-wrapper blue darken-3">
+          <a href="" class="brand-logo">🕊 Login</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><i class="material-icons">perm_identity</i></li>
+            <li>
+              <% if (user) { %>
+                <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+              <% } else { %>
+                <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+              <% } %>
+                </li>
           </ul>
         </div>
       </nav>
