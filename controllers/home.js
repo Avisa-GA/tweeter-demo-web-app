@@ -6,7 +6,9 @@ const passport = require('passport')
 
 router.get('/', (req, res) => {
      try {
-          res.render('index')
+          res.render('index', {
+               user: req.user
+          })
      } catch (err) {
           console.log('error due to show home page:', err)
           res.redirect('/')
