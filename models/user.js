@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema( {
     name: String,
     bio: String,
     email: String,
-    avatarURL: String,
+    avatarUrl: String,
     googleId: String
 }, {
     timestamps: true
