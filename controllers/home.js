@@ -1,9 +1,15 @@
 
+const Tweet = require('../models/tweet')
 
 module.exports = {
     index
 }
 
 function index(req, res) {
-    res.render('home/index')
+    Tweet.find({ createdBy: req.params.id}, function(err, tweets) {
+        res.render('home/index', {
+            tweets,
+            user: req.user
+        })
+    })
 }
