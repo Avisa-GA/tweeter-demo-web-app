@@ -1,10 +1,11 @@
 
 const mongoose = require('mongoose')
-const commentSchema = require('./comment.js');
+const commentSchema = require('./comment.js')
+const Schema = mongoose.Schema
 
 // ? tweets
 // ===============
-const tweetSchema = mongoose.Schema( {
+const tweetSchema = new mongoose.Schema( {
     description: String,
     image: String,
     emoji: String,
