@@ -12,6 +12,7 @@ passport.use(new GoogleStrategy({
     // a user attempted a login
     // does this user already exist in our db?
     // if they don't we create then
+    
     User.findOne({
         googleId: profile.id
     }, function (err, user) {
@@ -25,7 +26,8 @@ passport.use(new GoogleStrategy({
             const newUser = new User({
                 name: profile.displayName,
                 email: profile.emails[0].value,
-                googleId: profile.id
+                googleId: profile.id,
+                avatarUrl: profile.photos[0].value
             })
 
             newUser.save(function (err) {
@@ -34,6 +36,7 @@ passport.use(new GoogleStrategy({
                 return cb(null, newUser)
             })
         }
+
     })
 
 }))
