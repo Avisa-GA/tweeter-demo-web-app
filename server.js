@@ -60,6 +60,7 @@ app.use(passport.session())
 // =======================
 app.use('/', require('./routes/index'))
 app.use('/', require('./routes/users'))
+app.use('/', require('./routes/home'))
 
 
 // ======================
