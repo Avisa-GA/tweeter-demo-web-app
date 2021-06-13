@@ -2,10 +2,10 @@
 const router = require('express').Router();
 const userCtrl = require('../controllers/users');
 
-// GET /students
+// GET /users
 router.get('/users', userCtrl.index);
 
-// POST /facts
+// POST /comments
 // We will already have access to the logged in student on
 // the server, therefore do not use: /students/:id/facts
 // router.post('/comments', userCtrl.addComment);
