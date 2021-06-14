@@ -6,7 +6,7 @@ const Schema = mongoose.Schema
 // ? tweets
 // ===============
 const tweetSchema = new mongoose.Schema( {
-    description: String,
+    content: String,
     image: String,
     emoji: String,
     comments: [commentSchema],
