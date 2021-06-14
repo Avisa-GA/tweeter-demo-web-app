@@ -28,24 +28,33 @@
         <span style="font-size: small; color: cornflowerblue;" class="title"><%= user.name%></span>
         <p><%= tweet.content%>
         </p>
+        <select>
+          <option value="" disabled selected></option>
+          <option value="delete">Delete</option>
+          <option value="edit">Edit</option>
+        </select>
       </li>
       <% }) %>
+      <script>
+        const elems = document.querySelectorAll('select');
+        M.FormSelect.init(elems);
+    </script>
     </ul>
     <!-- new code below -->
 
     <div class="card-action">
       <form action="/tweets" method="POST" enctype="multipart/form-data">
         <input type="text" name="content">
-        <a style="height: 48; width: 48;" class="btn-floating waves-effect waves-light blue lighten-3"><i class="tiny material-icons">add_a_photo</i></a>
+        <a class="btn-floating waves-effect waves-light blue lighten-3"><i class="tiny material-icons">add_a_photo</i></a>
         <button style="margin-left: 80%;" type="submit" class=" btn white-text blue darken-3">tweet</button>
       </form>
     </div>
+   
 
-
-    <!-- More code below... -->
   </main>
   <%console.log(tweets)%>
   <%console.log(user)%>
+
 </body>
 
 </html>
