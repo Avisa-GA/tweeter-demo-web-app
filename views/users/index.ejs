@@ -23,13 +23,14 @@
 
       <main class="container">
         <ul class="collection">
-          <li class="collection-item avatar">
-            <img src="" alt="" class="circle">
-            <span class="title">Title</span>
-            <p>First Line <br>
-               Second Line
+          <% users.forEach( user => { %>
+          <li style="padding-top: 2%;" class="collection-item avatar">
+            <img src=<%= user.avatarUrl%> alt="Profile Image" class="circle">
+            <span class="title"><%= user.name%></span>
+            <p><%= new Date(user.createdAt).toLocaleDateString()%> 
             </p>
           </li>
+          <% }) %>
         </ul>
       </main>
 </body>
