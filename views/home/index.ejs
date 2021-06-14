@@ -17,21 +17,35 @@
       </div>
     </nav>
   </div>
+  <header class="container">
+
+  </header>
   <main class="container">
     <ul class="collection">
-      <li class="collection-item avatar">
-        <img src="" alt="" class="circle">
-        <span class="title">Title</span>
-        <p>First Line <br>
-          Second Line
+      <% tweets.forEach( tweet => { %>
+      <li style="padding-top: 3%;" class="collection-item avatar">
+        <img src=<%= user.avatarUrl%> alt="Profile Image" class="circle">
+        <span style="font-size: small; color: cornflowerblue;" class="title"><%= user.name%></span>
+        <p><%= tweet.content%>
         </p>
       </li>
+      <% }) %>
     </ul>
+    <!-- new code below -->
+
+    <div class="card-action">
+      <form action="/tweets" method="POST" enctype="multipart/form-data">
+        <input type="text" name="content">
+        <a style="height: 48; width: 48;" class="btn-floating waves-effect waves-light blue lighten-3"><i class="tiny material-icons">add_a_photo</i></a>
+        <button style="margin-left: 80%;" type="submit" class=" btn white-text blue darken-3">tweet</button>
+      </form>
+    </div>
+
+
+    <!-- More code below... -->
   </main>
-
-</body>
-
-</html>
+  <%console.log(tweets)%>
+  <%console.log(user)%>
 </body>
 
 </html>
