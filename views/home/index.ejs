@@ -3,6 +3,7 @@
 
 <head>
   <%- include ('../partials/head') %>
+  <script defer src="/js/script.js"></script>
   <title>🕊 Home</title>
 </head>
 
@@ -28,11 +29,26 @@
         <span style="font-size: small; color: cornflowerblue;" class="title"><%= user.name%></span>
         <p><%= tweet.content%>
         </p>
-        <select>
+        <!-- TODO Edit and Delete action here -->
+        
+        <select id="changeStatus" name="changeStatus">
           <option value="" disabled selected></option>
-          <option value="delete">Delete</option>
-          <option value="edit">Edit</option>
+          <option id="delete" value="delete">Delete</option>
+          <option id="edit" value="edit">Edit</option>
         </select>
+     
+        <!-- TODO comments here -->
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="comments" class="materialize-textarea"></textarea>
+                <label for="comments" >Comments</label>
+                <a style="margin-left: 90%;" class="btn-floating waves-effect waves-light blue lighten-3"><i class="tiny material-icons">send</i></a>
+              </div>
+            </div>
+          </form>
+        </div>
       </li>
       <% }) %>
       <script>
@@ -46,14 +62,14 @@
       <form action="/tweets" method="POST" enctype="multipart/form-data">
         <input type="text" name="content">
         <a class="btn-floating waves-effect waves-light blue lighten-3"><i class="tiny material-icons">add_a_photo</i></a>
-        <button style="margin-left: 80%;" type="submit" class=" btn white-text blue darken-3">tweet</button>
+        <button id="tweetButton" style="margin-left: 80%;" type="submit" class="btn white-text blue darken-3">tweet</button>
       </form>
     </div>
    
 
   </main>
-  <%console.log(tweets)%>
-  <%console.log(user)%>
+  <!-- console.log(tweets)%> -->
+  <!-- console.log(user)%> -->
 
 </body>
 
