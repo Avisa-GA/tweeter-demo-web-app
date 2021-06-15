@@ -24,7 +24,7 @@
      <main class="container">
       <div class="row">
         <div class="col s12 m7">
-          <div class="card small">
+          <div class="card meduim">
             <% users.forEach( user => { %>
             <div class="card-image">
               <img src="<%= user.avatarUrl%>">
@@ -34,9 +34,16 @@
               <p><%= new Date(user.createdAt).toLocaleDateString()%> 
                 <br />
                 <p><%= user.email%></p>
+                <br />
+                <!-- TODO add bio here -->
+                <p>Bio</p>
             </div>
-            <div style="color:lightsteelblue; font-size: small; padding: 2%; margin-left: 2%;" class="card-action">
-              <p>Quote</p>
+            <div style="padding: 10%;" class="card-action">
+              <form style="float: right;" action="" method="POST">
+                <input
+                  style=" border-style: none; color: lightblue; background-color: white;"
+                  type="submit" value="Edit Profile">
+                </form>
             </div>
             <% }) %>
           </div>
