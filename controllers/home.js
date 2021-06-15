@@ -1,4 +1,3 @@
-
 const Tweet = require('../models/tweet')
 const cloudinary = require('cloudinary').v2
 
@@ -10,7 +9,7 @@ module.exports = {
 }
 
 function index(req, res) {
-    Tweet.find({}, function(err, tweets) {
+    Tweet.find({}, function (err, tweets) {
         res.render('home/index', {
             tweets,
             user: req.user
@@ -24,23 +23,32 @@ function deleteTweet(req, res) {
     })
 }
 
-function addTweet(req, res) {
-    req.body.createdBy = req.user._id
-    const photo = req.files.coverPhoto;
-    console.log(photo)
-    photo.mv(`./uploads/${photo.name}`)
-    const result = cloudinary.uploader.upload(`./uploads/${photo.name}`)
-    req.body.coverPhoto = result.name
-    Tweet.create(req.body)
-    res.redirect('/home')
+async function addTweet(req, res) {
+    try {
+        req.body.createdBy = req.user._id
+        const photo = req.files.coverPhoto;
+        photo.mv(`./uploads/${photo.name}`)
+        const result = await cloudinary.uploader.upload(`./uploads/${photo.name}`)
+        req.body.coverPhoto = result.secure_url
+        const tweet = await Tweet.create(req.body)
+        res.redirect(`/home`)
+    } catch (err) {
+        console.log(err)
+        res.redirect('/home')
+    }
 }
 
 
-function addComments(req, res) {
-    Tweet.findById(req.params.id, (err, tweet) => {
+async function addComments(req, res) {
+    try {
+        const tweet = await Tweet.findById(req.params.id)
         tweet.comments.push(req.body)
-        tweet.save(() => {
-             res.redirect(`/home`)
+        await tweet.save(() => {
+            res.redirect(`/home`)
         })
-    })
+    } catch (err) {
+        console.log(err)
+        res.redirect('/home')
+    }
+
 }
