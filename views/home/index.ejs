@@ -3,8 +3,8 @@
 
 <head>
   <%- include ('../partials/head') %>
-  <script defer src="/js/script.js"></script>
   <title>🕊 Home</title>
+  <script src="/js/script.js"></script>
 </head>
 
 <body>
@@ -22,6 +22,7 @@
 
   </header>
   <main class="container">
+
     <ul class="collection">
       <% tweets.forEach( tweet => { %>
       <li style="padding-top: 3%;" class="collection-item avatar">
@@ -29,48 +30,41 @@
         <span style="font-size: small; color: cornflowerblue;" class="title"><%= user.name%></span>
         <p><%= tweet.content%>
         </p>
-        <!-- TODO Edit and Delete action here -->
-        
-        <select id="changeStatus" name="changeStatus">
-          <option value="" disabled selected></option>
-          <option id="delete" value="delete">Delete</option>
-          <option id="edit" value="edit">Edit</option>
-        </select>
-     
-        <!-- TODO comments here -->
-        <div class="row">
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s12">
-                <textarea id="comments" class="materialize-textarea"></textarea>
-                <label for="comments" >Comments</label>
-                <a style="margin-left: 90%;" class="btn-floating waves-effect waves-light blue lighten-3"><i class="tiny material-icons">send</i></a>
+       <!-- Delete here -->
+       <form style="float: right;" action="/home/<%=tweet._id%>?_method=DELETE" method="POST">
+        <input style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;" type="submit" value="Delete">
+      </form>
+        <!-- Add Comments here -->
+        <form action="/home/<%= tweet._id%>/comments" method="POST">
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">comment</i>
+                  <textarea name="content" id="icon_prefix2" class="tiny materialize-textarea"></textarea>
+                  <input style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;" type="submit" value="Comment">
+                </div>
               </div>
-            </div>
-          </form>
-        </div>
+            </form>
+          </div>
+        </form>
       </li>
       <% }) %>
-      <script>
-        const elems = document.querySelectorAll('select');
-        M.FormSelect.init(elems);
-    </script>
     </ul>
     <!-- new code below -->
-
+<!-- Add Tweet -->
     <div class="card-action">
-      <form action="/tweets" method="POST" enctype="multipart/form-data">
+      <form action="/tweets" method="POST">
         <input type="text" name="content">
-        <a class="btn-floating waves-effect waves-light blue lighten-3"><i class="tiny material-icons">add_a_photo</i></a>
-        <button id="tweetButton" style="margin-left: 80%;" type="submit" class="btn white-text blue darken-3">tweet</button>
+        <a style="height: 48; width: 48;" class="btn-floating waves-effect waves-light blue lighten-3"><i class="tiny material-icons">add_a_photo</i></a>
+        <button style="margin-left: 80%;" type="submit" class=" btn white-text blue darken-3">tweet</button>
       </form>
     </div>
-   
 
+
+    <!-- More code below... -->
   </main>
-  <!-- console.log(tweets)%> -->
-  <!-- console.log(user)%> -->
-
+  <%console.log(tweets)%>
 </body>
 
 </html>
