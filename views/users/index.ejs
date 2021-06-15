@@ -22,10 +22,10 @@
       </header>
       <!-- Show Profile Detail -->
      <main class="container">
+      <% users.forEach( user => { %>
       <div class="row">
         <div class="col s12 m7">
-          <div class="card meduim">
-            <% users.forEach( user => { %>
+          <div id="profileDetail" class="card small">
             <div class="card-image">
               <img src="<%= user.avatarUrl%>">
               <span class="card-title"><%= user.name%></span>
@@ -33,22 +33,62 @@
             <div style="color: lightslategrey; font-size: small; padding: 2%; margin-left: 2%;" class="card-content">
               <p><%= new Date(user.createdAt).toLocaleDateString()%> 
                 <br />
-                <p><%= user.email%></p>
+                <p>bio <%= user.bio%></p>
                 <br />
                 <!-- TODO add bio here -->
-                <p>Bio</p>
             </div>
-            <div style="padding: 10%;" class="card-action">
+            <div class="card-action">
               <form style="float: right;" action="" method="POST">
                 <input
                   style=" border-style: none; color: lightblue; background-color: white;"
                   type="submit" value="Edit Profile">
                 </form>
             </div>
-            <% }) %>
+      
           </div>
         </div>
       </div>
+
+      <!-- TODO Profile Update -->
+      <form action="/users/<%= user._id%>?_method=PUT" method="post">
+        <div class="row">
+          <div class="col s12 m7">
+            <div id="edit" class="card small">
+            
+              <div class="card-image">
+                <div class="file-field input-field">
+                  <div class="btn blue darken-3">
+                    <span><i class="tiny material-icons">add_a_photo</i></span>
+                    <input type="file" name="coverPhoto" id="coverPhoto" placeholder="upload image">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                  </div>
+                </div>
+                <img src="<%= user.avatarUrl%>">
+                <!-- Image input for Update -->
+                <input style="text-align: left;" type="text" class="card-title" name="name" value="<%= user.name%>">
+              </div>
+              <div style="color: lightslategrey; font-size: small; padding: 2%; margin-left: 2%;" class="card-content">
+                <p><%= new Date(user.createdAt).toLocaleDateString()%> 
+                  <br />
+                  <input type="text" name="bio" value="bio <%= user.bio%>">
+                  <br />
+                  <!-- TODO add bio here -->
+              </div>
+              <div class="card-action">
+                <form  action="" method="POST">
+                  <input
+                    style=" border-style: none; color: lightblue; background-color: white; margin-left: 70%;"
+                    type="submit" value="Update Profile">
+                  </form>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+      </form>
+      <% }) %>
     </main>
 </body>
 </html>
