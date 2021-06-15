@@ -8,19 +8,28 @@ module.exports = {
     addComments
 }
 
-function index(req, res) {
-    Tweet.find({}, function (err, tweets) {
-        res.render('home/index', {
+async function index(req, res) {
+    try {
+        const tweets = await Tweet.find({})
+        res.render('/home/index', {
             tweets,
             user: req.user
         })
-    })
+    } catch (err) {
+        console.log(err)
+        res.redirect('/home')
+    }
 }
 
-function deleteTweet(req, res) {
-    Tweet.findByIdAndRemove(req.params.id, (err, data) => {
+async function deleteTweet(req, res) {
+    try {
+        await Tweet.findByIdAndRemove(req.params.id)
         res.redirect('/home')
-    })
+    } catch (err) {
+        console.log(err)
+        res.redirect('/home')
+    }
+
 }
 
 async function addTweet(req, res) {
