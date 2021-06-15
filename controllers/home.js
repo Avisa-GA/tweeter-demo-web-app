@@ -11,10 +11,11 @@ module.exports = {
 async function index(req, res) {
     try {
         const tweets = await Tweet.find({})
-        res.render('/home/index', {
+        res.render('home/index.ejs', {
             tweets,
             user: req.user
         })
+        
     } catch (err) {
         console.log(err)
         res.redirect('/home')
