@@ -40,7 +40,7 @@ async function addTweet(req, res) {
         photo.mv(`./uploads/${photo.name}`)
         const result = await cloudinary.uploader.upload(`./uploads/${photo.name}`)
         req.body.coverPhoto = result.secure_url
-        const tweet = await Tweet.create(req.body)
+         await Tweet.create(req.body)
         res.redirect(`/home`)
     } catch (err) {
         console.log(err)
