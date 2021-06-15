@@ -20,18 +20,28 @@
       <header class="container">
         
       </header>
-
-      <main class="container">
-        <ul class="collection">
-          <% users.forEach( user => { %>
-          <li style="padding-top: 2%;" class="collection-item avatar">
-            <img src=<%= user.avatarUrl%> alt="Profile Image" class="circle">
-            <span class="title"><%= user.name%></span>
-            <p><%= new Date(user.createdAt).toLocaleDateString()%> 
-            </p>
-          </li>
-          <% }) %>
-        </ul>
-      </main>
+      <!-- Show Profile Detail -->
+     <main class="container">
+      <div class="row">
+        <div class="col s12 m7">
+          <div class="card small">
+            <% users.forEach( user => { %>
+            <div class="card-image">
+              <img src="<%= user.avatarUrl%>">
+              <span class="card-title"><%= user.name%></span>
+            </div>
+            <div style="color: lightslategrey; font-size: small; padding: 2%; margin-left: 2%;" class="card-content">
+              <p><%= new Date(user.createdAt).toLocaleDateString()%> 
+                <br />
+                <p><%= user.email%></p>
+            </div>
+            <div style="color:lightsteelblue; font-size: small; padding: 2%; margin-left: 2%;" class="card-action">
+              <p>Quote</p>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </main>
 </body>
 </html>
