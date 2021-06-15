@@ -5,20 +5,14 @@
     // Constants and State variable
  
     // Cached Elements Reference
-    const select = document.getElementById('changeStatus')
-    const tweetButton = document.getElementById('tweetButton')
+    // const comment = document.getElementById('icon_prefix2');
 
     // EventListener
-    select.addEventListener('click', handleSelect)
-    select.addEventListener('click', handleClick)
+    // comment.addEventListener('click', handleClick)
 
     // Functions
-    function handleSelect() {
-        console.log('I am here')
-    }
-
-    function handleClick() {
-        console.log('here')
-    }
+    // function handleClick() {
+    //     alert('clicked');
+    //   }
 
 })();
