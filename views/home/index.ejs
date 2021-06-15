@@ -29,6 +29,7 @@
         <img src=<%= user.avatarUrl%> alt="Profile Image" class="circle">
         <span style="font-size: small; color: cornflowerblue;" class="title"><%= user.name%></span>
         <p><%= tweet.content%>
+          <img class="materialboxed" width="650" src="<%= tweet.coverPhoto%>">
         </p>
        <!-- Delete here -->
        <form style="float: right;" action="/tweets/<%=tweet._id%>?_method=DELETE" method="POST">
@@ -52,11 +53,22 @@
       <% }) %>
     </ul>
     <!-- new code below -->
-<!-- Add Tweet -->
+<!-- TODO add tweet here -->
     <div class="card-action">
-      <form action="/tweets" method="POST">
+      <form action="/tweets" method="POST" enctype="multipart/form-data">
         <input type="text" name="content">
-        <a style="height: 48; width: 48;" class="btn-floating waves-effect waves-light blue lighten-3"><i class="tiny material-icons">add_a_photo</i></a>
+        <!-- Add input image here  -->
+        <div class="file-field input-field">
+          <div class="btn">
+            <span><i class="tiny material-icons">add_a_photo</i></span>
+            <input type="file" name="coverPhoto" id="coverPhoto">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+        <!-- <a style="height: 48; width: 48;" class="btn-floating waves-effect waves-light blue lighten-3"><i class="tiny material-icons">add_a_photo</i></a> -->
+        <!-- Image  -->
         <button style="margin-left: 80%;" type="submit" class=" btn white-text blue darken-3">tweet</button>
       </form>
     </div>
