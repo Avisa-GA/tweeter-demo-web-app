@@ -8,7 +8,7 @@ const Schema = mongoose.Schema
 const tweetSchema = new mongoose.Schema( {
     content: String,
     image: String,
-    emoji: String,
+    coverPhoto: String,
     comments: [commentSchema],
     createdBy: {
         type: Schema.Types.ObjectId,
