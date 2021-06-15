@@ -31,7 +31,7 @@
         <p><%= tweet.content%>
         </p>
        <!-- Delete here -->
-       <form style="float: right;" action="/home/<%=tweet._id%>?_method=DELETE" method="POST">
+       <form style="float: right;" action="/tweets/<%=tweet._id%>?_method=DELETE" method="POST">
         <input style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;" type="submit" value="Delete">
       </form>
         <!-- Add Comments here -->
