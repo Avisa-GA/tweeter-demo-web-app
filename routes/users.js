@@ -5,12 +5,10 @@ const userCtrl = require('../controllers/users');
 // GET /users
 router.get('/users', userCtrl.index);
 
-// POST /comments
-// We will already have access to the logged in student on
-// the server, therefore do not use: /students/:id/facts
-// router.post('/comments', userCtrl.addComment);
+// Update /users
+router.put('/:id', userCtrl.updateUser)
 
-// // DELETE /facts/:id
-// router.delete('/comments/:id', userCtrl.delComment);
+// Edit
+// router.get('/:id/edit', userCtrl.editUser)
 
 module.exports = router;
