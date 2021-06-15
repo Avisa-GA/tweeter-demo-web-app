@@ -33,32 +33,32 @@
           <img style="box-shadow: 1px 1px 8px 1px #808080; border-radius: 10px; margin-top: 2%;" class="materialboxed"
             width="150" src="<%= tweet.coverPhoto%>">
           <br />
-              <% tweet.comments.forEach( comment => {%>
-                 <p style="color: darkgray; margin-left: 5%; font-size: small;"><%= comment.content%>
+          <% tweet.comments.forEach( comment => {%>
+          <p style="color: darkgray; margin-left: 5%; font-size: small;"><%= comment.content%>
             <%})%>
-        </p>
-       <!-- Delete here -->
-       <form style="float: right;" action="/tweets/<%=tweet._id%>?_method=DELETE" method="POST">
+          </p>
+          <!-- Delete here -->
+          <form style="float: right;" action="/tweets/<%=tweet._id%>?_method=DELETE" method="POST">
             <input
               style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;"
               type="submit" value="Delete">
-            </form>
-            <!-- Add Comments here -->
-            <form action="/tweets/<%= tweet._id%>/comments" method="POST">
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <i class="material-icons prefix">comment</i>
-                      <textarea name="content" id="icon_prefix2" class="tiny materialize-textarea"></textarea>
-                      <input
-                        style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;"
-                        type="submit" value="Comment">
-                    </div>
+          </form>
+          <!-- Add Comments here -->
+          <form action="/tweets/<%= tweet._id%>/comments" method="POST">
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <i class="material-icons prefix">comment</i>
+                    <textarea name="content" id="icon_prefix2" class="tiny materialize-textarea"></textarea>
+                    <input
+                      style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;"
+                      type="submit" value="Comment">
                   </div>
-                </form>
-              </div>
-            </form>
+                </div>
+              </form>
+            </div>
+          </form>
       </li>
       <% }) %>
     </ul>
