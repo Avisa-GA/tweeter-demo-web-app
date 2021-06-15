@@ -15,16 +15,3 @@ function index(req, res) {
 }
 
 
-function showTweet(req, res) {
-
-}
-
-
-function addComment(req, res) {
-  
-}
-
-function delComment(req, res) {
-
-}
-
