@@ -14,4 +14,6 @@ function index(req, res) {
     })
 }
 
-
+function updateUser(req, res) {
+    
+}
