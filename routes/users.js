@@ -6,9 +6,9 @@ const userCtrl = require('../controllers/users');
 router.get('/users', userCtrl.index);
 
 // Update /users
-router.put('/:id', userCtrl.updateUser)
+router.put('/profile/:id', userCtrl.updateUser)
 
 // Edit
-// router.get('/:id/edit', userCtrl.editUser)
+// router.get('/profile/:id/edit', userCtrl.editUser)
 
 module.exports = router;

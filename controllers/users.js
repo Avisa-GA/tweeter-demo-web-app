@@ -1,4 +1,5 @@
 const User = require('../models/user')
+const cloudinary = require('cloudinary').v2
 
 module.exports = {
     index,
@@ -18,11 +19,12 @@ async function index(req, res) {
 }
 
 async function updateUser(req, res) {
+    
     try {
-        await Tweet.findByIdAndUpdate(req.params.id, req.body, {
+        await User.findByIdAndUpdate(req.params.id, req.body, {
             new: true
         })
-        res.redirect(`/users`)
+        res.redirect('/users')
     } catch (err) {
         console.log(err)
         res.redirect('/users')
@@ -30,30 +32,19 @@ async function updateUser(req, res) {
     }
 }
 
-// async function showUser(req, res) {
-//     try {
 
-//         const user = await User.findById(req.params.id)
-//         res.render('users/index', {
-//             user
-//         })
 
-//     } catch (err) {
-//         console.log(err)
-//         res.redirect('/users')
-//     }
-// }
+async function editUser(req, res) {
+    try {
 
-// async function editUser(req, res) {
-//     try {
+        const user = await User.findById(req.params.id)
+        res.render('users/index', {
+            user
+        })
+        res.render('/users')
 
-//         const user = await User.findById(req.params.id)
-//         res.render('users/index', {
-//             user
-//         })
-
-//     } catch (err) {
-//         console.log(err)
-//         res.render('/users')
-//     }
-// }
+    } catch (err) {
+        console.log(err)
+        res.render('/users')
+    }
+}
