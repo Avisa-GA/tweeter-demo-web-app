@@ -17,16 +17,18 @@ function index(req, res) {
     })
 }
 
+function deleteTweet(req, res) {
+    Tweet.findByIdAndRemove(req.params.id, (err, data) => {
+        res.redirect('/home')
+    })
+}
+
 function addTweet(req, res) {
     req.body.createdBy = req.user._id
     Tweet.create(req.body)
     res.redirect('/home')
 }
 
-function deleteTweet(req, res) {
-      Tweet.findByIdAndDelete(req.params.id)
-      res.redirect('/home')
-}
 
 function addComments(req, res) {
     Tweet.findById(req.params.id, (err, tweet) => {
