@@ -1,5 +1,6 @@
 
 const Tweet = require('../models/tweet')
+const cloudinary = require('cloudinary').v2
 
 module.exports = {
     index,
@@ -25,6 +26,11 @@ function deleteTweet(req, res) {
 
 function addTweet(req, res) {
     req.body.createdBy = req.user._id
+    const photo = req.files.coverPhoto;
+    console.log(photo)
+    photo.mv(`./uploads/${photo.name}`)
+    const result = cloudinary.uploader.upload(`./uploads/${photo.name}`)
+    req.body.coverPhoto = result.name
     Tweet.create(req.body)
     res.redirect('/home')
 }
