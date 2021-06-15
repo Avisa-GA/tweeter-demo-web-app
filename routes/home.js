@@ -6,10 +6,12 @@ const homeCtrl = require('../controllers/home')
 // Get - home
 router.get('/home', homeCtrl.index)
 
-// Post / tweet
-router.post('/tweets', homeCtrl.addTweet)
-
 // Delete / tweets/:id
-router.delete('/tweets/:id', homeCtrl.deleteTweet)
+router.delete('/home/:id', homeCtrl.deleteTweet)
+
+// Post / tweet
+router.post('/home', homeCtrl.addTweet)
+
+router.post('/home/:id/comments', homeCtrl.addComments)
 
 module.exports = router
