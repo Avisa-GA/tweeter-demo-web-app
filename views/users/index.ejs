@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <%- include ('../partials/head') %>
+    <script src="/js/script.js"></script>
     <title>🕊 User</title>
 </head>
 <body>
@@ -38,11 +39,8 @@
                 <!-- TODO add bio here -->
             </div>
             <div class="card-action">
-              <form style="float: right;" action="" method="POST">
-                <input
-                  style=" border-style: none; color: lightblue; background-color: white;"
-                  type="submit" value="Edit Profile">
-                </form>
+              <!--! Edit Button here -->
+              <a style="float: right; color: skyblue;" href="">Edit Profile</a>
             </div>
       
           </div>
@@ -50,21 +48,12 @@
       </div>
 
       <!-- TODO Profile Update -->
-      <form action="/users/<%= user._id%>?_method=PUT" method="post">
+      <form action="/profile/<%= user._id%>?_method=PUT" method="post">
         <div class="row">
           <div class="col s12 m7">
             <div id="edit" class="card small">
             
               <div class="card-image">
-                <div class="file-field input-field">
-                  <div class="btn blue darken-3">
-                    <span><i class="tiny material-icons">add_a_photo</i></span>
-                    <input type="file" name="coverPhoto" id="coverPhoto" placeholder="upload image">
-                  </div>
-                  <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
-                  </div>
-                </div>
                 <img src="<%= user.avatarUrl%>">
                 <!-- Image input for Update -->
                 <input style="text-align: left;" type="text" class="card-title" name="name" value="<%= user.name%>">
@@ -77,7 +66,7 @@
                   <!-- TODO add bio here -->
               </div>
               <div class="card-action">
-                <form  action="" method="POST">
+                <form  action="/users/<%= user._id%>?_method=PUT" method="POST">
                   <input
                     style=" border-style: none; color: lightblue; background-color: white; margin-left: 70%;"
                     type="submit" value="Update Profile">
