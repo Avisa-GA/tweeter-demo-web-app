@@ -17,7 +17,7 @@ async function index(req, res) {
         const tweets = await Tweet.find({})
         res.render('home/index.ejs', {
             tweets,
-            user: req.user,
+            currentUser: req.user,
             news: data.response.results
         })
         
