@@ -3,6 +3,7 @@
 
 <head>
   <%- include ('../partials/head') %>
+  <script defer src="/js/homeScript.js"></script>
   <title>🕊 Home</title>
 </head>
 
@@ -22,67 +23,83 @@
   </header>
   <main class="container">
     <!-- Show Tweets here -->
-    <ul class="collection">
-      <% tweets.forEach( tweet => { %>
-      <li style="padding-top: 3%;" class="collection-item avatar">
-        <img src=<%= user.avatarUrl%> alt="Profile Image" class="circle">
-        <span style="font-size: small; color: cornflowerblue;" class="title"><%= user.name%></span>
-        <p style="color: darkgray;"><%= tweet.content%>
-          <br />
-          <img style="box-shadow: 1px 1px 8px 1px #808080; border-radius: 10px; margin-top: 2%;" class="materialboxed"
-            width="150" src="<%= tweet.coverPhoto%>">
-          <br />
-          <% tweet.comments.forEach( comment => {%>
-          <p style="color: darkgray; margin-left: 5%; font-size: small;"><%= comment.content%>
-            <%})%>
-          </p>
-          <!-- Delete here -->
-          <form style="float: right;" action="/tweets/<%=tweet._id%>?_method=DELETE" method="POST">
-            <input
-              style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;"
-              type="submit" value="Delete">
-          </form>
-          <!-- Add Comments here -->
-          <form action="/tweets/<%= tweet._id%>/comments" method="POST">
-            <div class="row">
-              <form class="col s12">
+    <div class="row">
+      <div class="col s4">
+        
+        <ul style="margin-top: 50%; width: 400px; margin-right: 40%;" class="collapsible popout">
+          <blockquote style="color: rgb(22, 90, 180); font-size: 24px; margin-left: 6%;">
+            NEWS FEED
+          </blockquote>
+          <% news.forEach(n => { %>
+          <li class="z-depth-5">
+            <div style="color: rgb(22, 90, 180)" class="collapsible-header"><i class="material-icons">star_half</i><%= n.sectionName %></div>
+            <div style="color: lightblue;" class="collapsible-body"><span><%= n.webTitle %></span></div>
+            <% }) %>
+          </li>
+        </ul>
+      </div>
+      <div style="width: 500px; margin-top: 2%; margin-left: 10%;" class="col s4">
+        <ul class="collection">
+          <% tweets.forEach( tweet => { %>
+          <li style="padding-top: 3%;" class="collection-item avatar">
+            <img src=<%= user.avatarUrl%> alt="Profile Image" class="circle">
+            <span style="font-size: small; color: cornflowerblue;" class="title"><%= user.name%></span>
+            <p style="color: darkgray;"><%= tweet.content%>
+              <br />
+              <img style="box-shadow: 1px 1px 8px 1px #808080; border-radius: 10px; margin-top: 2%;"
+                class="materialboxed" width="150" src="<%= tweet.coverPhoto%>">
+              <br />
+              <% tweet.comments.forEach( comment => {%>
+              <p style="color: darkgray; margin-left: 5%; font-size: small;"><%= comment.content%>
+                <%})%>
+              </p>
+              <!-- Delete here -->
+              <form style="float: right;" action="/tweets/<%=tweet._id%>?_method=DELETE" method="POST">
+                <input
+                  style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;"
+                  type="submit" value="Delete">
+              </form>
+              <!-- Add Comments here -->
+              <form action="/tweets/<%= tweet._id%>/comments" method="POST">
                 <div class="row">
-                  <div class="input-field col s6">
-                    <i class="material-icons prefix">comment</i>
-                    <textarea name="content" id="icon_prefix2" class="tiny materialize-textarea"></textarea>
-                    <input
-                      style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;"
-                      type="submit" value="Comment">
-                  </div>
+                  <form class="col s12">
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <i class="material-icons prefix">comment</i>
+                        <textarea name="content" id="icon_prefix2" class="tiny materialize-textarea"></textarea>
+                        <input
+                          style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;"
+                          type="submit" value="Comment">
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </form>
+          </li>
+          <% }) %>
+        </ul>
+        <!-- new code below -->
+        <!-- TODO add tweet here -->
+        <div class="card-action">
+          <form action="/tweets" method="POST" enctype="multipart/form-data">
+            <input type="text" name="content" placeholder="What's happening?">
+            <!-- Add input image here  -->
+            <div class="file-field input-field">
+              <div class="btn blue darken-3">
+                <span><i class="tiny material-icons">add_a_photo</i></span>
+                <input type="file" name="coverPhoto" id="coverPhoto" placeholder="upload image">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
             </div>
+            <!-- <a style="height: 48; width: 48;" class="btn-floating waves-effect waves-light blue lighten-3"><i class="tiny material-icons">add_a_photo</i></a> -->
+            <!-- Image  -->
+            <button style="margin-left: 80%;" type="submit" class=" btn white-text blue darken-3">tweet</button>
           </form>
-      </li>
-      <% }) %>
-    </ul>
-    <!-- new code below -->
-    <!-- TODO add tweet here -->
-    <div class="card-action">
-      <form action="/tweets" method="POST" enctype="multipart/form-data">
-        <input type="text" name="content" placeholder="What's happening?">
-        <!-- Add input image here  -->
-        <div class="file-field input-field">
-          <div class="btn blue darken-3">
-            <span><i class="tiny material-icons">add_a_photo</i></span>
-            <input type="file" name="coverPhoto" id="coverPhoto" placeholder="upload image">
-          </div>
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text">
-          </div>
         </div>
-        <!-- <a style="height: 48; width: 48;" class="btn-floating waves-effect waves-light blue lighten-3"><i class="tiny material-icons">add_a_photo</i></a> -->
-        <!-- Image  -->
-        <button style="margin-left: 80%;" type="submit" class=" btn white-text blue darken-3">tweet</button>
-      </form>
+      </div>
     </div>
-
-
     <!-- More code below... -->
   </main>
   <%console.log(tweets)%>
