@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <%- include ('../partials/head') %>
-    <script src="/js/script.js"></script>
+    <script defer src="/js/script.js"></script>
     <title>🕊 User</title>
 </head>
 <body>
@@ -26,7 +26,7 @@
       <% users.forEach( user => { %>
       <div class="row">
         <div class="col s12 m7">
-          <div id="profileDetail" class="card small">
+          <div id="profile-details" class="card small">
             <div class="card-image">
               <img src="<%= user.avatarUrl%>">
               <span class="card-title"><%= user.name%></span>
@@ -34,13 +34,13 @@
             <div style="color: lightslategrey; font-size: small; padding: 2%; margin-left: 2%;" class="card-content">
               <p><%= new Date(user.createdAt).toLocaleDateString()%> 
                 <br />
-                <p>bio <%= user.bio%></p>
+                <p><%= user.bio%></p>
                 <br />
                 <!-- TODO add bio here -->
             </div>
             <div class="card-action">
               <!--! Edit Button here -->
-              <a style="float: right; color: skyblue;" href="">Edit Profile</a>
+              <button id="edit-button" style="float: right; color: skyblue; border-style: none; background-color: white;" >Edit Profile</button>
             </div>
       
           </div>
@@ -48,7 +48,7 @@
       </div>
 
       <!-- TODO Profile Update -->
-      <form action="/profile/<%= user._id%>?_method=PUT" method="post">
+      <form class="hidden" id="edit-form" action="/profile/<%= user._id%>?_method=PUT" method="post">
         <div class="row">
           <div class="col s12 m7">
             <div id="edit" class="card small">
