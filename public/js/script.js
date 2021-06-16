@@ -1,18 +1,15 @@
+(function () {
 
+    const button = document.getElementById('edit-button')
+    const editForm = document.getElementById('edit-form')
+    const profileDetails = document.getElementById('profile-details')
 
-(function() {
+    button.addEventListener('click', handleClick)
 
-    // Constants and State variable
- 
-    // Cached Elements Reference
-    // const comment = document.getElementById('icon_prefix2');
+    function handleClick() {
+        editForm.classList.toggle('hidden')
+        profileDetails.classList.toggle('hidden')
+    }
 
-    // EventListener
-    // comment.addEventListener('click', handleClick)
-
-    // Functions
-    // function handleClick() {
-    //     alert('clicked');
-    //   }
 
 })();

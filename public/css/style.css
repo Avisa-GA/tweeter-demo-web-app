@@ -1,5 +1,14 @@
 
+* {
+    box-sizing: border-box;
+  }
+
+
 .nav-wrapper {
     padding-left: 2%;
     padding-right: 2%;
+}
+
+.hidden {
+    display: none;
 }
