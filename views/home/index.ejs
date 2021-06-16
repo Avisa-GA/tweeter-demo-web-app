@@ -42,9 +42,9 @@
       <div style="width: 500px; margin-top: 2%; margin-left: 10%;" class="col s4">
         <ul class="collection">
           <% tweets.forEach( tweet => { %>
-          <li style="padding-top: 3%;" class="collection-item avatar">
-            <img src=<%= user.avatarUrl%> alt="Profile Image" class="circle">
-            <span style="font-size: small; color: cornflowerblue;" class="title"><%= user.name%></span>
+          <li style="" class="collection-item avatar">
+            <img src=<%= tweet.createdBy.avatarUrl%> alt="Profile Image" class="circle">
+            <span style="font-size: small; color: cornflowerblue;" class="title"><%= tweet.createdBy.name%></span>
             <p style="color: darkgray;"><%= tweet.content%>
               <br />
               <img style="box-shadow: 1px 1px 8px 1px #808080; border-radius: 10px; margin-top: 2%;"
@@ -56,20 +56,21 @@
               </p>
               <!-- Delete here -->
               <% if (tweet.createdBy._id.equals(user && user._id)) { %>
-              <form style="float: right;" action="/tweets/<%=tweet._id%>?_method=DELETE" method="POST">
+              <form style="float: right; margin-bottom: 20%;" action="/tweets/<%=tweet._id%>?_method=DELETE" method="POST">
                 <input
-                  style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;"
+                  style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%;"
                   type="submit" value="Delete">
               </form>
               <% } else{ %>
               <form style="float: right; display: none;" action="/tweets/<%=tweet._id%>?_method=DELETE" method="POST">
                 <input
-                  style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;"
+                  style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2% ;"
                   type="submit" value="Delete">
               </form>
               <% } %>
               <!-- Add Comments here -->
-              <form action="/tweets/<%= tweet._id%>/comments" method="POST">
+              <% if (tweet.createdBy._id.equals(user && user._id)) { %>
+              <form style="display: none;"  action="/tweets/<%= tweet._id%>/comments" method="POST">
                 <div class="row">
                   <form class="col s12">
                     <div class="row">
@@ -84,6 +85,23 @@
                   </form>
                 </div>
               </form>
+              <% } else { %> 
+                <form action="/tweets/<%= tweet._id%>/comments" method="POST">
+                  <div class="row">
+                    <form class="col s12">
+                      <div class="row">
+                        <div class="input-field col s6">
+                          <i class="material-icons prefix">comment</i>
+                          <textarea name="content" id="icon_prefix2" class="tiny materialize-textarea"></textarea>
+                          <input
+                            style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;"
+                            type="submit" value="Comment">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </form>
+                <%} %>
           </li>
           <% }) %>
         </ul>
