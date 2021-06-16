@@ -1,5 +1,8 @@
 const Tweet = require('../models/tweet')
 const cloudinary = require('cloudinary').v2
+let axios = require('axios');
+let API_KEY = process.env.API_KEY
+let BASE_URL = 'https://content.guardianapis.com/search'
 
 module.exports = {
     index,
@@ -10,10 +13,13 @@ module.exports = {
 
 async function index(req, res) {
     try {
+        const { data } = await axios.get(`${BASE_URL}?q=headline&api-key=${API_KEY}`);
+        console.log(data.results)
         const tweets = await Tweet.find({})
         res.render('home/index.ejs', {
             tweets,
-            user: req.user
+            user: req.user,
+            news: data.response.results
         })
         
     } catch (err) {
