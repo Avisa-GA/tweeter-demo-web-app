@@ -44,6 +44,7 @@
     <div style="width: 500px; margin-top: 2%; margin-left: 10%;" class="col s4">
       <ul class="collection">
         <% tweets.forEach( tweet => { %>
+          <% console.log('you must see here: ', tweet.createdBy.name)%>
           <!-- Profile image & name -->
         <li style="padding-top: 3%;" class="collection-item avatar">
           <% if (tweet.createdBy._id.equals(currentUser && currentUser._id)) { %>
