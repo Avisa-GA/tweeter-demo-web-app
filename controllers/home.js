@@ -14,7 +14,6 @@ module.exports = {
 async function index(req, res) {
     try {
         const { data } = await axios.get(`${BASE_URL}?q=headline&api-key=${API_KEY}`);
-        console.log(data.results)
         const tweets = await Tweet.find({})
         res.render('home/index.ejs', {
             tweets,
