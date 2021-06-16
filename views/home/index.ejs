@@ -22,7 +22,7 @@
 
   </header>
   <main class="container">
-    <!-- Show Tweets here -->
+<!-- TODO News Feed -->
     <div class="row">
       <div class="col s4">
 
@@ -39,96 +39,105 @@
           </li>
         </ul>
       </div>
-      <div style="width: 500px; margin-top: 2%; margin-left: 10%;" class="col s4">
-        <ul class="collection" style="display: block;">
-          <% tweets.forEach( tweet => { %>
-          <li  class="collection-item avatar" style="display: inline-block;">
-            <% if (tweet.createdBy._id.equals(user && user._id)) { %>
-            <img src=<%= tweet.createdBy.avatarUrl%> alt="Profile Image" class="circle">
-            <% } else{ %>
-              <img src=<%= user.avatarUrl%> alt="Profile Image" class="circle">
-              <%}%>
-            <span style="font-size: small; color: cornflowerblue; padding-top: 5%;" class="title"><%= tweet.createdBy.name%></span>
-            <p style="color: darkgray;"><%= tweet.content%>
-              <img style="box-shadow: 1px 1px 8px 1px #808080; border-radius: 10px; margin-top: 2%;"
-                class="materialboxed" width="150" src="<%= tweet.coverPhoto%>">
-              <% tweet.comments.forEach( comment => {%>
-              <p style="color: darkgray; margin-left: 5%; font-size: small;"><%= comment.content%>
-                <%})%>
-              </p>
-              <!-- Delete here -->
-              <% if (tweet.createdBy._id.equals(user && user._id)) { %>
-              <form style="float: right; margin-bottom: 20%;  display: none;" action="/tweets/<%=tweet._id%>?_method=DELETE" method="POST">
-                <input
-                  style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%;"
-                  type="submit" value="Delete">
-              </form>
-              <% } else{ %>
-              <form style="float: right;" action="/tweets/<%=tweet._id%>?_method=DELETE" method="POST">
-                <input
-                  style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2% ;"
-                  type="submit" value="Delete">
-              </form>
-              <% } %>
-              <!-- Add Comments here -->
-              <% if (tweet.createdBy._id.equals(user && user._id)) { %>
-              <form action="/tweets/<%= tweet._id%>/comments" method="POST">
-                <div class="row">
-                  <form class="col s12">
-                    <div class="row">
-                      <div class="input-field col s6">
-                        <i class="material-icons prefix">comment</i>
-                        <textarea name="content" id="icon_prefix2" class="tiny materialize-textarea"></textarea>
-                        <input
-                          style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;"
-                          type="submit" value="Comment">
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </form>
-              <% } else { %> 
-                <form style="display: none;" action="/tweets/<%= tweet._id%>/comments" method="POST">
+    <!-- Show Tweets here -->
+
+    <div style="width: 500px; margin-top: 2%; margin-left: 10%;" class="col s4">
+      <ul class="collection">
+        <% tweets.forEach( tweet => { %>
+          <!-- Profile image & name -->
+        <li style="padding-top: 3%;" class="collection-item avatar">
+          <% if (tweet.createdBy._id.equals(currentUser && currentUser._id)) { %>
+          <img src=<%= currentUser.avatarUrl%> alt="Profile Image" class="circle">
+          <span style="font-size: small; color: cornflowerblue;" class="title"><%= currentUser.name%></span>
+          <% } else { %>
+          <img src=<%= tweet.createdBy.avatarUrl%> alt="Profile Image" class="circle">
+          <span style="font-size: small; color: cornflowerblue;" class="title"><%= tweet.createdBy.name%></span>
+          <% } %>
+          <!-- ! ends here  -->
+          <p style="color: darkgray;"><%= tweet.content%>
+            <br />
+            <img style="box-shadow: 1px 1px 8px 1px #808080; border-radius: 10px; margin-top: 2%;" class="materialboxed"
+              width="150" src="<%= tweet.coverPhoto%>">
+            <br />
+            <% tweet.comments.forEach( comment => {%>
+            <p style="color: darkgray; margin-left: 5%; font-size: small;"><%= comment.content%>
+              <%})%>
+            </p>
+            <!-- TODO Current User -->
+            <% if (tweet.createdBy._id.equals(currentUser && currentUser._id)) { %>
+            <!-- Delete here -->
+            <form style="float: right;" action="/tweets/<%=tweet._id%>?_method=DELETE" method="POST">
+              <input
+                style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;"
+                type="submit" value="Delete">
+            </form>
+            <!-- Add Comments here -->
+            <form action="/tweets/<%= tweet._id%>/comments" method="POST" style="display: none;">
+              <div class="row">
+                <form class="col s12">
                   <div class="row">
-                    <form class="col s12">
-                      <div class="row">
-                        <div class="input-field col s6">
-                          <i class="material-icons prefix">comment</i>
-                          <textarea name="content" id="icon_prefix2" class="tiny materialize-textarea"></textarea>
-                          <input
-                            style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;"
-                            type="submit" value="Comment">
-                        </div>
-                      </div>
-                    </form>
+                    <div class="input-field col s6">
+                      <i class="material-icons prefix">comment</i>
+                      <textarea name="content" id="icon_prefix2" class="tiny materialize-textarea"></textarea>
+                      <input
+                        style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;"
+                        type="submit" value="Comment">
+                    </div>
                   </div>
                 </form>
-                <%} %>
-          </li>
-          <% }) %>
-        </ul>
-        <!-- new code below -->
-        <!-- TODO add tweet here -->
-        <div class="card-action">
-          <form action="/tweets" method="POST" enctype="multipart/form-data">
-            <input type="text" name="content" placeholder="What's happening?">
-            <!-- Add input image here  -->
-            <div class="file-field input-field">
-              <div class="btn blue darken-3">
-                <span><i class="tiny material-icons">add_a_photo</i></span>
-                <input type="file" name="coverPhoto" id="coverPhoto" placeholder="upload image">
               </div>
-              <div class="file-path-wrapper">
-                <input class="file-path validate" type="text">
+            </form>
+            <!-- TODO users -->
+            <% } else { %>
+              <form style="float: right; display: none;" action="/tweets/<%=tweet._id%>?_method=DELETE" method="POST">
+                <input
+                  style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;"
+                  type="submit" value="Delete">
+              </form>
+              <!-- Add Comments here -->
+            <form action="/tweets/<%= tweet._id%>/comments" method="POST">
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <i class="material-icons prefix">comment</i>
+                      <textarea name="content" id="icon_prefix2" class="tiny materialize-textarea"></textarea>
+                      <input
+                        style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;"
+                        type="submit" value="Comment">
+                    </div>
+                  </div>
+                </form>
               </div>
+            </form>
+
+              <% } %>
+            
+        </li>
+        <% }) %>
+      </ul>
+      <!-- new code below -->
+      <!-- TODO add tweet here -->
+      <div class="card-action">
+        <form action="/tweets" method="POST" enctype="multipart/form-data">
+          <input type="text" name="content" placeholder="What's happening?">
+          <!-- Add input image here  -->
+          <div class="file-field input-field">
+            <div class="btn blue darken-3">
+              <span><i class="tiny material-icons">add_a_photo</i></span>
+              <input type="file" name="coverPhoto" id="coverPhoto" placeholder="upload image">
             </div>
-            <!-- <a style="height: 48; width: 48;" class="btn-floating waves-effect waves-light blue lighten-3"><i class="tiny material-icons">add_a_photo</i></a> -->
-            <!-- Image  -->
-            <button style="margin-left: 80%;" type="submit" class=" btn white-text blue darken-3">tweet</button>
-          </form>
-        </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
+            </div>
+          </div>
+          <!-- <a style="height: 48; width: 48;" class="btn-floating waves-effect waves-light blue lighten-3"><i class="tiny material-icons">add_a_photo</i></a> -->
+          <!-- Image  -->
+          <button style="margin-left: 80%;" type="submit" class=" btn white-text blue darken-3">tweet</button>
+        </form>
       </div>
     </div>
+  </div>
     <!-- More code below... -->
   </main>
   <%console.log(tweets)%>
