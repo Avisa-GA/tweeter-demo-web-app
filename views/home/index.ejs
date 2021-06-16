@@ -66,7 +66,7 @@
             <!-- TODO Current User -->
             <% if (tweet.createdBy._id.equals(currentUser && currentUser._id)) { %>
             <!-- Delete here -->
-            <form style="float: right;" action="/tweets/<%=tweet._id%>?_method=DELETE" method="POST">
+            <form style="float: right; margin-bottom: 4%;" action="/tweets/<%=tweet._id%>?_method=DELETE" method="POST">
               <input
                 style="width: 100px; border-style: none; color: lightblue; background-color: white; margin-right: 1%; margin-bottom: 2%;"
                 type="submit" value="Delete">
