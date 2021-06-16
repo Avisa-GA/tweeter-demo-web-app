@@ -3,6 +3,7 @@ const cloudinary = require('cloudinary').v2
 
 module.exports = {
     index,
+    deleteUser,
     updateUser
 }
 
@@ -16,6 +17,17 @@ async function index(req, res) {
     } catch (err) {
         console.log(err)
     }
+}
+
+async function deleteUser(req, res) {
+    try {
+        await User.findByIdAndRemove(req.params.id)
+        res.redirect('/users')
+    } catch (err) {
+        console.log(err)
+        res.redirect('/users')
+    }
+
 }
 
 async function updateUser(req, res) {

@@ -38,9 +38,8 @@
                 <br />
                 <!-- TODO add bio here -->
             </div>
-            <div class="card-action">
               <!--! Edit Button here -->
-              <button id="edit-button" style="float: right; color: skyblue; border-style: none; background-color: white;" >Edit Profile</button>
+              <button id="edit-button" style="float: right; color: skyblue; border-style: none; background-color: white; margin-right: 7%;" >Edit Profile</button>
             </div>
       
           </div>
@@ -61,7 +60,7 @@
               <div style="color: lightslategrey; font-size: small; padding: 2%; margin-left: 2%;" class="card-content">
                 <p><%= new Date(user.createdAt).toLocaleDateString()%> 
                   <br />
-                  <input type="text" name="bio" value="bio <%= user.bio%>">
+                  <input type="text" name="bio" value="<%= user.bio%>">
                   <br />
                   <!-- TODO add bio here -->
               </div>

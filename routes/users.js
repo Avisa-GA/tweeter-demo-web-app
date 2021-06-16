@@ -5,6 +5,9 @@ const userCtrl = require('../controllers/users');
 // GET /users
 router.get('/users', userCtrl.index);
 
+// Delete / users/:id
+router.delete('/users/:id', userCtrl.deleteUser)
+
 // Update /users
 router.put('/profile/:id', userCtrl.updateUser)
 
