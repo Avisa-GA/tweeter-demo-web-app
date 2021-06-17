@@ -44,29 +44,37 @@
       <div style="width: 500px; margin-top: 2%; margin-left: 10%;" class="col s4">
         <ul class="collection">
           <% tweets.forEach( tweet => { %>
-          <% console.log('you must see here: ', tweet.createdBy.name)%>
+          
           <!-- Profile image & name -->
           <li style="padding-top: 3%;" class="collection-item avatar">
             <% if (tweet.createdBy._id.equals(currentUser && currentUser._id)) { %>
-            <img src=<%= currentUser.avatarUrl%> alt="Profile Image" class="circle">
-            <span style="font-size: small; color: cornflowerblue;" class="title"><%= currentUser.name%></span>
-            <% } else { %>
-            <img src=<%= tweet.createdBy.avatarUrl%> alt="Profile Image" class="circle">
             <span style="font-size: small; color: cornflowerblue;" class="title"><%= tweet.createdBy.name%></span>
-            <% } %>
-            <!-- ! ends here  -->
+            <img src=<%= currentUser.avatarUrl%> alt="Profile Image" class="circle">
             <p style="color: darkgray;"><%= tweet.content%>
               <br />
               <img style="box-shadow: 1px 1px 8px 1px #808080; border-radius: 10px; margin-top: 2%;"
                 class="materialboxed" width="150" src="<%= tweet.coverPhoto%>">
-                <!-- TODO ❤️ Like Button -->
-                
+            <% } else { %>
+            <img src=<%= tweet.createdBy.avatarUrl%> alt="Profile Image" class="circle">
+            <span style="font-size: small; color: cornflowerblue;" class="title"><%= tweet.createdBy.name%></span>
+            <!-- ^ starts here -->
+            <p style="color: darkgray;"><%= tweet.content%>
+              <br />
+              <img style="box-shadow: 1px 1px 8px 1px #808080; border-radius: 10px; margin-top: 2%;"
+                class="materialboxed" width="150" src="<%= tweet.coverPhoto%>">
+              <!-- TODO ❤️ Like Button -->
+
               <br />
               <% tweet.comments.forEach( comment => {%>
 
-              <p style="color: darkgray; margin-left: 5%; font-size: small;"><%= tweet.createdBy.name%>:  <%= comment.content%>
-                <%})%>
+              <p style="color: darkgray; margin-left: 5%; font-size: small;"><%= currentUser.name%>:
+                <%= comment.content%>
+
               </p>
+              <%})%>
+              <% } %>
+              <!-- ! ends here  -->
+
               <!-- Current User -->
               <% if (tweet.createdBy._id.equals(currentUser && currentUser._id)) { %>
               <!-- Delete here -->
