@@ -17,7 +17,7 @@ async function index(req, res) {
         const {
             data
         } = await axios.get(`${BASE_URL}?q=headline&api-key=${API_KEY}`);
-        const tweets = await Tweet.find({}).populate('createdBy')
+        const tweets = await Tweet.find({}).populate('createdBy').populate('likes');
         res.render('home/index.ejs', {
             tweets,
             currentUser: req.user,
@@ -78,17 +78,17 @@ async function addLikes(req, res) {
         const tweet = await Tweet.findOne({
             _id: req.params.id,
             likes: {
-                $nin: [req.body.createdBy._id]
+                $nin: [req.body._id]
             }
         })
         if (!tweet) return res.redirect('/home')
         // article found! Add user's id to likes array (in memory)
-        tweet.likes.push(req.body.createdBy._id)
+        tweet.likes.push(req.body._id)
         // commit changes to DB
         await tweet.save();
 
     } catch (err) {
         console.log(err)
-        res.redirect('/home')
+        
     }
 }

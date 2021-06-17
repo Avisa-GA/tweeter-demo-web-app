@@ -53,19 +53,14 @@
             <% } else { %>
             <img src=<%= tweet.createdBy.avatarUrl%> alt="Profile Image" class="circle">
             <span style="font-size: small; color: cornflowerblue;" class="title"><%= tweet.createdBy.name%></span>
-              <!-- TODO ❤️ Like Button -->
-              <form action="/tweets/<%= currentUser._id %>/likes" method="POST">
-                <input type="hidden" value="" name="currentUserId" />
-                <button type="submit">❤️ <%= tweet.likes.length ? 'Likes ' + tweet.likes.length : 'Like'%></button>
-              </form>
-              <!-- <i style="margin-top: 2%;" class="material-icons">favorite</i> -->
-              <!-- Todo ends here -->
             <% } %>
             <!-- ! ends here  -->
             <p style="color: darkgray;"><%= tweet.content%>
               <br />
               <img style="box-shadow: 1px 1px 8px 1px #808080; border-radius: 10px; margin-top: 2%;"
                 class="materialboxed" width="150" src="<%= tweet.coverPhoto%>">
+                <!-- TODO ❤️ Like Button -->
+                
               <br />
               <% tweet.comments.forEach( comment => {%>
 
