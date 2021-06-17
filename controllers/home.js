@@ -8,19 +8,22 @@ module.exports = {
     index,
     deleteTweet,
     addTweet,
-    addComments
+    addComments,
+    addLikes
 }
 
 async function index(req, res) {
     try {
-        const { data } = await axios.get(`${BASE_URL}?q=headline&api-key=${API_KEY}`);
+        const {
+            data
+        } = await axios.get(`${BASE_URL}?q=headline&api-key=${API_KEY}`);
         const tweets = await Tweet.find({}).populate('createdBy')
         res.render('home/index.ejs', {
             tweets,
             currentUser: req.user,
             news: data.response.results
         })
-        
+
     } catch (err) {
         console.log(err)
         res.redirect('/home')
@@ -45,7 +48,7 @@ async function addTweet(req, res) {
         photo.mv(`./uploads/${photo.name}`)
         const result = await cloudinary.uploader.upload(`./uploads/${photo.name}`)
         req.body.coverPhoto = result.secure_url
-         await Tweet.create(req.body)
+        await Tweet.create(req.body)
         res.redirect(`/home`)
     } catch (err) {
         console.log(err)
@@ -66,4 +69,26 @@ async function addComments(req, res) {
         res.redirect('/home')
     }
 
+}
+
+async function addLikes(req, res) {
+    try {
+
+        // find article by id but also if the user has not liked it
+        const tweet = await Tweet.findOne({
+            _id: req.params.id,
+            likes: {
+                $nin: [req.body.createdBy._id]
+            }
+        })
+        if (!tweet) return res.redirect('/home')
+        // article found! Add user's id to likes array (in memory)
+        tweet.likes.push(req.body.createdBy._id)
+        // commit changes to DB
+        await tweet.save();
+
+    } catch (err) {
+        console.log(err)
+        res.redirect('/home')
+    }
 }
