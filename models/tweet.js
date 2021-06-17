@@ -9,6 +9,7 @@ const tweetSchema = new mongoose.Schema( {
     content: String,
     image: String,
     coverPhoto: String,
+    likes: [{type: Schema.Types.ObjectId, ref: 'User'}],
     comments: [commentSchema],
     createdBy: {
         type: Schema.Types.ObjectId,
