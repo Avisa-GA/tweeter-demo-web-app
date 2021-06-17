@@ -22,7 +22,7 @@
 
   </header>
   <main class="container">
-    <!-- TODO News Feed -->
+    <!--  News Feed -->
     <div class="row">
       <div class="col s4">
 
@@ -53,6 +53,13 @@
             <% } else { %>
             <img src=<%= tweet.createdBy.avatarUrl%> alt="Profile Image" class="circle">
             <span style="font-size: small; color: cornflowerblue;" class="title"><%= tweet.createdBy.name%></span>
+              <!-- TODO ❤️ Like Button -->
+              <form action="/tweets/<%= currentUser._id %>/likes" method="POST">
+                <input type="hidden" value="" name="currentUserId" />
+                <button type="submit">❤️ <%= tweet.likes.length ? 'Likes ' + tweet.likes.length : 'Like'%></button>
+              </form>
+              <!-- <i style="margin-top: 2%;" class="material-icons">favorite</i> -->
+              <!-- Todo ends here -->
             <% } %>
             <!-- ! ends here  -->
             <p style="color: darkgray;"><%= tweet.content%>
@@ -65,7 +72,7 @@
               <p style="color: darkgray; margin-left: 5%; font-size: small;"><%= tweet.createdBy.name%>:  <%= comment.content%>
                 <%})%>
               </p>
-              <!-- TODO Current User -->
+              <!-- Current User -->
               <% if (tweet.createdBy._id.equals(currentUser && currentUser._id)) { %>
               <!-- Delete here -->
               <form style="float:inline-end; margin-left: 70%;" action="/tweets/<%=tweet._id%>?_method=DELETE"
@@ -76,7 +83,7 @@
               </form>
               <!-- Add Comments here -->
 
-              <!-- TODO users -->
+              <!--  users -->
               <% } else { %>
 
               <!-- Add Comments here -->
