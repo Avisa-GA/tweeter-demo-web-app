@@ -14,7 +14,7 @@ module.exports = {
 async function index(req, res) {
     try {
         const { data } = await axios.get(`${BASE_URL}?q=headline&api-key=${API_KEY}`);
-        const tweets = await Tweet.find({})
+        const tweets = await Tweet.find({}).populate('createdBy')
         res.render('home/index.ejs', {
             tweets,
             currentUser: req.user,
