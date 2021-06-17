@@ -85,7 +85,9 @@ async function addLikes(req, res) {
         // article found! Add user's id to likes array (in memory)
         tweet.likes.push(req.body._id)
         // commit changes to DB
-        await tweet.save();
+        await tweet.save(() => {
+            res.redirect('/home')
+        });
 
     } catch (err) {
         console.log(err)
