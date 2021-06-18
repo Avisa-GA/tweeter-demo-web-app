@@ -18,3 +18,8 @@ Thank you to My Instructor <strong>Daniel Scotts</strong> for offering me great 
 ![Twitter ERD](https://user-images.githubusercontent.com/83556668/122609881-906e7680-d033-11eb-92ab-5942fd6f08b4.png)
 
 ## Images of working app
+![Screen Shot 2021-06-18 at 1 00 49 PM](https://user-images.githubusercontent.com/83556668/122611211-c90f4f80-d035-11eb-85a2-91b6b44ddd50.png)
+
+![Screen Shot 2021-06-18 at 1 01 44 PM](https://user-images.githubusercontent.com/83556668/122611234-d1678a80-d035-11eb-879b-e9b8a378b1df.png)
+
+![Screen Shot 2021-06-18 at 1 02 15 PM](https://user-images.githubusercontent.com/83556668/122611245-d593a800-d035-11eb-890b-60de4c308a45.png)
