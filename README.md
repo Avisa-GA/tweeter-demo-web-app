@@ -26,3 +26,6 @@ Thank you to My Instructor <strong>Daniel Scotts</strong> for offering me great 
 
 ## Getting Started
 [Click here](https://tweeter-demo-web-app.herokuapp.com)
+
+## Future Enhancement
+- User be able to follow eachother.
