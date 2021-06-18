@@ -43,8 +43,7 @@
             <!-- ************************************************************ -->
             <div style="width: 500px; margin-top: 2%; margin-left: 10%;" class="col s4">
                 <% tweets.forEach( tweet => { %>
-
-                  <!-- ****************************************** current User ************************************** -->
+<!-- ********************** Current USer ********************************* -->
                 <% if (tweet.createdBy._id.equals(currentUser && currentUser._id)) { %>
                 <ul class="collection">
                     <li style="padding-top: 3%;" class="collection-item avatar">
@@ -64,8 +63,8 @@
                             </form>
                     </li>
                 </ul>
-                <% } else { %>
-                  <!-- *********************************** Other Users ************************************************** -->
+                <% } else if { %>
+                    <!-- ************************* other users ************************************* -->
                 <ul class="collection">
                     <li style="padding-top: 3%;" class="collection-item avatar">
                         <img src=<%= tweet.createdBy.avatarUrl%> alt="Profile Image" class="circle">
@@ -75,14 +74,12 @@
                             <br />
                             <img style="box-shadow: 1px 1px 8px 1px #808080; border-radius: 10px; margin-top: 2%;"
                                 class="materialboxed" width="150" src="<%= tweet.coverPhoto%>">
-                                <br />
-                            
                             <% tweet.comments.forEach( comment => {%>
                             <p style="color: darkgray; margin-left: 5%; font-size: small;"><%= currentUser.name%>:
                                 <%= comment.content%>
                             </p>
                             <%})%>
-                            <!-- TODo add like button here -->
+                             <!-- TODo add like button here -->
                             <!-- ToDo ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️  -->
                             <% const shouldDisable = tweet.createdBy._id.equals(currentUser && currentUser._id) || tweet.likes.includes(currentUser._id) %> 
                             <% const shouldShowForm = !tweet.createdBy._id.equals(currentUser && currentUser._id) %>
@@ -101,12 +98,14 @@
                             <% } %>
                             <style>
                               #likesButton:disabled {
-                                  color: gray;
+                                  color: lightgrey;
                               }
             
                             </style>
-            
-            
+
+
+
+
                             <!-- Add Comments here -->
                             <form action="/tweets/<%= tweet._id%>/comments" method="POST">
                                 <div class="row">
@@ -127,7 +126,7 @@
                     </li>
                 </ul>
                 <% } %>
-                <% }) %>
+                <% )} %>
                 <!-- TODO add tweet here -->
                 <div class="card-action">
                     <form action="/tweets" method="POST" enctype="multipart/form-data">
