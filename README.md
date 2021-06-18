@@ -13,3 +13,6 @@ Thank you to My Instructor <strong>Daniel Scotts</strong> for offering me great 
 
 ## Wireframe
 ![Twitter Demo App](https://user-images.githubusercontent.com/83556668/122609733-53a27f80-d033-11eb-9c42-a06ef34aa76f.png)
+
+## ERD
+![Twitter ERD](https://user-images.githubusercontent.com/83556668/122609881-906e7680-d033-11eb-92ab-5942fd6f08b4.png)
