@@ -28,4 +28,4 @@ Thank you to our Instructor <strong>Daniel Scott</strong> for offering me great 
 [Click here](https://tweeter-demo-web-app.herokuapp.com)
 
 ## Future Enhancement
-- Users can follow each other.
+- Users can follow each other and interact with each other.
