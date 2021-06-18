@@ -43,7 +43,7 @@
             <!-- ************************************************************ -->
             <div style="width: 500px; margin-top: 2%; margin-left: 10%;" class="col s4">
                 <% tweets.forEach( tweet => { %>
-            <!-- ********************** Current USer ********************************* -->
+
                 <% if (tweet.createdBy._id.equals(currentUser && currentUser._id)) { %>
                 <ul class="collection">
                     <li style="padding-top: 3%;" class="collection-item avatar">
@@ -63,8 +63,7 @@
                             </form>
                     </li>
                 </ul>
-                <% } else if { %>
-                    <!-- ************************* other users ************************************* -->
+                <% } else { %>
                 <ul class="collection">
                     <li style="padding-top: 3%;" class="collection-item avatar">
                         <img src=<%= tweet.createdBy.avatarUrl%> alt="Profile Image" class="circle">
@@ -79,32 +78,27 @@
                                 <%= comment.content%>
                             </p>
                             <%})%>
-                             <!-- TODo add like button here -->
+                            <!-- TODo add like button here -->
                             <!-- ToDo ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️  -->
-                            <% const shouldDisable = tweet.createdBy._id.equals(currentUser && currentUser._id) || tweet.likes.includes(currentUser._id) %> 
+                            <% const shouldDisable = tweet.createdBy._id.equals(currentUser && currentUser._id) || tweet.likes.includes(currentUser._id) %>
                             <% const shouldShowForm = !tweet.createdBy._id.equals(currentUser && currentUser._id) %>
-            
+
                             <% if (shouldShowForm) { %>
-            
+
                             <form action="/tweets/<%= tweet._id %>/likes" method="POST">
-                              <input type="hidden" value="<%= currentUser._id %>" name="_id" />
-                              <button 
-                                <%= shouldDisable ? 'disabled' : ''%>
-                                id="likesButton" 
-                                style="color: grey; border-style: none; background-color: white;" 
-                                type="submit"><i style="margin-top: 2%; <%= shouldDisable ? 'color: rgb(218, 34, 82)' : '' %>" class="material-icons">favorite</i>
-                              </button>
+                                <input type="hidden" value="<%= currentUser._id %>" name="_id" />
+                                <button <%= shouldDisable ? 'disabled' : ''%> id="likesButton"
+                                    style="color: grey; border-style: none; background-color: white;" type="submit"><i
+                                        style="margin-top: 2%; <%= shouldDisable ? 'color: rgb(218, 34, 82)' : '' %>"
+                                        class="material-icons">favorite</i>
+                                </button>
                             </form>
                             <% } %>
                             <style>
-                              #likesButton:disabled {
-                                  color: lightgrey;
-                              }
-            
+                                #likesButton:disabled {
+                                    color: lightgrey;
+                                }
                             </style>
-
-
-
 
                             <!-- Add Comments here -->
                             <form action="/tweets/<%= tweet._id%>/comments" method="POST">
@@ -126,7 +120,7 @@
                     </li>
                 </ul>
                 <% } %>
-                <% )} %>
+                <% }) %>
                 <!-- TODO add tweet here -->
                 <div class="card-action">
                     <form action="/tweets" method="POST" enctype="multipart/form-data">
@@ -141,7 +135,7 @@
                                 <input class="file-path validate" type="text">
                             </div>
                         </div>
-                      
+
                         <button style="margin-left: 80%;" type="submit"
                             class=" btn white-text blue darken-3">tweet</button>
                     </form>

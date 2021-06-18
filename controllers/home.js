@@ -1,7 +1,7 @@
 const Tweet = require('../models/tweet')
 const cloudinary = require('cloudinary').v2
 let axios = require('axios');
-let API_KEY = process.env.NEWS_API_KEY
+let API_KEY = process.env.API_KEY
 let BASE_URL = 'https://content.guardianapis.com/search'
 
 module.exports = {
