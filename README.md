@@ -7,4 +7,6 @@ Thank you to My Instructor <strong>Daniel Scotts</strong> for offering me great 
 - HTML3
 - CSS
 - JavaScript/NodeJS/EJS
-- [Cloudinary][]
+- [Cloudinary](https://cloudinary.com/home-6-4-video-b)
+- [Google Auth](https://console.cloud.google.com/home/dashboard)
+- [Guardian News](https://content.guardianapis.com)
