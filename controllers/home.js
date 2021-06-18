@@ -16,7 +16,8 @@ async function index(req, res) {
     try {
         const {
             data
-        } = await axios.get(`${BASE_URL}?q=headline&api-key=${API_KEY}`);
+        } = await axios.get(`${BASE_URL}?page=2&q=debate&api-key=${API_KEY}`);
+        
         const tweets = await Tweet.find({}).populate('createdBy');
         res.render('home/index.ejs', {
             tweets,

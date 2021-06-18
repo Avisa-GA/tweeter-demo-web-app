@@ -30,11 +30,14 @@
                     <blockquote style="color: rgb(22, 90, 180); font-size: 24px; margin-left: 6%;">
                         NEWS FEED
                     </blockquote>
+                  
                     <% news.forEach(n => { %>
+                          
                     <li class="z-depth-5">
                         <div style="color: rgb(22, 90, 180)" class="collapsible-header"><i
                                 class="material-icons">star_half</i><%= n.sectionName %></div>
                         <div style="color: lightblue;" class="collapsible-body"><span><%= n.webTitle %></span></div>
+                        
                         <% }) %>
                     </li>
                 </ul>
