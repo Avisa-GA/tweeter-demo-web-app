@@ -10,3 +10,6 @@ Thank you to My Instructor <strong>Daniel Scotts</strong> for offering me great 
 - [Cloudinary](https://cloudinary.com/home-6-4-video-b)
 - [Google Auth](https://console.cloud.google.com/home/dashboard)
 - [Guardian News](https://content.guardianapis.com)
+
+## Wireframe
+![Twitter Demo App](https://user-images.githubusercontent.com/83556668/122609733-53a27f80-d033-11eb-9c42-a06ef34aa76f.png)
