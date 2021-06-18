@@ -44,6 +44,7 @@
             <div style="width: 500px; margin-top: 2%; margin-left: 10%;" class="col s4">
                 <% tweets.forEach( tweet => { %>
 
+                  <!-- ****************************************** current User ************************************** -->
                 <% if (tweet.createdBy._id.equals(currentUser && currentUser._id)) { %>
                 <ul class="collection">
                     <li style="padding-top: 3%;" class="collection-item avatar">
@@ -64,6 +65,7 @@
                     </li>
                 </ul>
                 <% } else { %>
+                  <!-- *********************************** Other Users ************************************************** -->
                 <ul class="collection">
                     <li style="padding-top: 3%;" class="collection-item avatar">
                         <img src=<%= tweet.createdBy.avatarUrl%> alt="Profile Image" class="circle">
@@ -73,6 +75,7 @@
                             <br />
                             <img style="box-shadow: 1px 1px 8px 1px #808080; border-radius: 10px; margin-top: 2%;"
                                 class="materialboxed" width="150" src="<%= tweet.coverPhoto%>">
+                                <br />
                             <% tweet.comments.forEach( comment => {%>
                             <p style="color: darkgray; margin-left: 5%; font-size: small;"><%= currentUser.name%>:
                                 <%= comment.content%>
