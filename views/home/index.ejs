@@ -88,19 +88,27 @@
                 <% } else { %>
                 <!-- TODo add like button here -->
                 <!-- ToDo ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️  -->
+                <% const shouldDisable = tweet.createdBy._id.equals(currentUser && currentUser._id) || tweet.likes.includes(currentUser._id) %> 
+                <% const shouldShowForm = !tweet.createdBy._id.equals(currentUser && currentUser._id) %>
 
+                <% if (shouldShowForm) { %>
 
-                <% if (tweet.createdBy._id.equals(currentUser && currentUser._id)) {%>
-                <form action="" method="POST">
-                  <input type="hidden" value="" name="_id" />
-                  <button disabled id="likesButton" style="color: lightgoldenrodyellows; border-style: none; background-color: white;" type="submit"><i style="margin-top: 2%;" class="material-icons">favorite</i></button>
+                <form action="/tweets/<%= tweet._id %>/likes" method="POST">
+                  <input type="hidden" value="<%= currentUser._id %>" name="_id" />
+                  <button 
+                    <%= shouldDisable ? 'disabled' : ''%>
+                    id="likesButton" 
+                    style="color: grey; border-style: none; background-color: white;" 
+                    type="submit"><i style="margin-top: 2%; <%= shouldDisable ? 'color: rgb(218, 34, 82)' : '' %>" class="material-icons">favorite</i>
+                  </button>
                 </form>
-                <% } else { %>
-                  <form action="/tweets/<%= tweet._id %>/likes" method="POST">
-                    <input type="hidden" value="<%=tweet._id%>" name="_id" />
-                    <button id="likesButton" style="color: rgb(218, 34, 82); border-style: none; background-color: white;" type="submit"><i style="margin-top: 2%;" class="material-icons">favorite</i></button>
-                  </form>
                 <% } %>
+                <style>
+                  #likesButton:disabled {
+                      color: gray;
+                  }
+
+                </style>
 
 
                 <!-- *** ends here  -->
