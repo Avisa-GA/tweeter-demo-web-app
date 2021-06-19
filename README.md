@@ -6,7 +6,7 @@ Thank you to our Instructor <strong>Daniel Scott</strong> for offering me great 
 ## Technologies
 - HTML
 - CSS
-- JavaScript/NodeJS/EJS/AJAX
+- JavaScript | NodeJS | EJS | AJAX
 - [Cloudinary](https://cloudinary.com/home-6-4-video-b)
 - [Google Auth](https://console.cloud.google.com/home/dashboard)
 - [Guardian News](https://content.guardianapis.com)
