@@ -1,7 +1,7 @@
 # 🕊 Twitter-demo-web-app
 
 My project is a Demo of Twitter website, Users were able to share their thoughts with each other, also share photos, and comment on each other's tweets and like them . I also put a news summary on the main page and users can read the headlines.
-Thank you to our Instructor <strong>Daniel Scott</strong> for offering me great features to add to my project and also his amazing workshops.
+Thank you to our Instructor <strong>Daniel Scott</strong> for offering me great features to add to my project and also for his amazing workshops 💫 .
 
 ## Technologies
 - HTML3
@@ -10,6 +10,8 @@ Thank you to our Instructor <strong>Daniel Scott</strong> for offering me great 
 - [Cloudinary](https://cloudinary.com/home-6-4-video-b)
 - [Google Auth](https://console.cloud.google.com/home/dashboard)
 - [Guardian News](https://content.guardianapis.com)
+- [Mongo DB](https://www.mongodb.com/)
+- [MaterializeCss](https://materializecss.com)
 
 ## Wireframe
 ![Twitter Demo App](https://user-images.githubusercontent.com/83556668/122609733-53a27f80-d033-11eb-9c42-a06ef34aa76f.png)
