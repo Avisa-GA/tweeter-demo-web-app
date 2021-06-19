@@ -4,7 +4,7 @@ My project is a Demo of Twitter website, Users were able to share their thoughts
 Thank you to our Instructor <strong>Daniel Scott</strong> for offering me great features to add to my project and also for his amazing workshops 💫 .
 
 ## Technologies
-- HTML3
+- HTML
 - CSS
 - JavaScript/NodeJS/EJS/AJAX
 - [Cloudinary](https://cloudinary.com/home-6-4-video-b)
