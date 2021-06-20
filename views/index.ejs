@@ -1,24 +1,44 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <%- include ('./partials/head.ejs') %>
-    <title>🕊 Login Page</title>
+  <%- include ('./partials/head.ejs') %>
+  <title>🕊 Login Page</title>
 </head>
+
 <body>
+  <!-- ********************* navBar *****************************-->
+  <div class="navbar-fixed">
     <nav>
-        <div class="nav-wrapper blue darken-3">
-          <a href="" class="brand-logo left">🕊 Login</a>
-          <ul id="nav-mobile" class="right">
-            <li>
-              <% if (user) { %>
-                <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-              <% } else { %>
-                <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-              <% } %>
-                </li>
-          </ul>
+      <div class="nav-wrapper blue darken-3">
+        
+      </div>
+    </nav>
+  </div>
+ 
+  <!-- ****************************** Login Page ****************************** -->
+  <main style="margin-left: 25%; margin-top: 5%;" class="container">
+    <div class="row">
+      <div class="col s12 m6">
+        <div style="box-shadow: 1px 1px 8px 1px #808080;" class="card">
+          <div class="card-image">
+            <img src="images/twitter.jpg">
+            <span class="card-title">Happening Now</span>
+            <% if (user) { %>
+            <a href="/logout" style="text-align: center; color: lightgray; font-size: x-small;"
+              class="btn-floating halfway-fab waves-effect waves-light red">Logout</a>
+            <% } else { %>
+            <a href="/auth/google" style="text-align: center; color: lightgray; font-size: x-small;"
+              class="btn-floating halfway-fab waves-effect waves-light  blue darken-3"></i>Login</a>
+            <% } %>
+          </div>
+          <div class="card-content">
+            <p style="color: lightgray;">Join Twitter Demo Today.</p>
+          </div>
         </div>
-      </nav>
+      </div>
+    </div>
+  </main>
 </body>
+
 </html>
