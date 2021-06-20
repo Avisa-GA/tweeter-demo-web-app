@@ -11,32 +11,38 @@
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper blue darken-3">
-        
+
       </div>
     </nav>
   </div>
- 
-  <!-- ****************************** Login Page ****************************** -->
-  <main style="margin-left: 20%; margin-top: 5%;" class="container">
+
+  <!-- ********************************** Login Page *********************************** -->
+
+  <main class="container">
     <div class="row">
       <div class="col s12 m6">
-        <div style="box-shadow: 1px 1px 8px 1px #808080;" class="card blue darken-3">
-          <div class="card-content white-text">
-            <span class="card-title">🕊 Happening Now</span>
-            <p style="color: lightgray; padding-left: 2%;">  Join Twitter Demo Today.</p>
+        <div style="box-shadow: 1px 1px 8px 1px #808080;" class="card">
+          <div class="card-image">
+            <img src="images/twitter2.jpg">
+            <span style="margin-right: 2%; font-size: medium;" class="card-title"> Happening Now</span>
+            <!-- ********************* Login Action ******************************* -->
             <% if (user) { %>
             <a href="/logout" style="text-align: center; color: lightgray; font-size: x-small;"
               class="btn-floating halfway-fab waves-effect waves-light red">Logout</a>
             <% } else { %>
             <a href="/auth/google" style="text-align: center; color: lightgray; font-size: x-small;"
-              class="btn-floating halfway-fab waves-effect waves-light blue darken-2"></i>Login</a>
+              class="btn-floating halfway-fab waves-effect waves-light blue darken-2">Login</a>
             <% } %>
+            <!-- ********************************************************************** -->
           </div>
-         
+          <div class="card-content">
+            <p style="color: lightgray; padding-left: 2%;"> Join Twitter Demo Today.</p>
+          </div>
         </div>
       </div>
     </div>
   </main>
+
 </body>
 
 </html>
