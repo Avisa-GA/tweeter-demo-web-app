@@ -17,24 +17,22 @@
   </div>
  
   <!-- ****************************** Login Page ****************************** -->
-  <main style="margin-left: 25%; margin-top: 5%;" class="container">
+  <main style="margin-left: 20%; margin-top: 5%;" class="container">
     <div class="row">
       <div class="col s12 m6">
-        <div style="box-shadow: 1px 1px 8px 1px #808080;" class="card">
-          <div class="card-image">
-            <img src="images/twitter.jpg">
-            <span class="card-title">Happening Now</span>
+        <div style="box-shadow: 1px 1px 8px 1px #808080;" class="card blue darken-3">
+          <div class="card-content white-text">
+            <span class="card-title">🕊 Happening Now</span>
+            <p style="color: lightgray; padding-left: 2%;">  Join Twitter Demo Today.</p>
             <% if (user) { %>
             <a href="/logout" style="text-align: center; color: lightgray; font-size: x-small;"
               class="btn-floating halfway-fab waves-effect waves-light red">Logout</a>
             <% } else { %>
             <a href="/auth/google" style="text-align: center; color: lightgray; font-size: x-small;"
-              class="btn-floating halfway-fab waves-effect waves-light  blue darken-3"></i>Login</a>
+              class="btn-floating halfway-fab waves-effect waves-light blue darken-2"></i>Login</a>
             <% } %>
           </div>
-          <div class="card-content">
-            <p style="color: lightgray;">Join Twitter Demo Today.</p>
-          </div>
+         
         </div>
       </div>
     </div>
