@@ -1,4 +1,6 @@
 const Tweet = require('../models/tweet')
+const Comment = require('../models/comment')
+const User = require('../models/user')
 const cloudinary = require('cloudinary').v2
 let axios = require('axios');
 let API_KEY = process.env.API_KEY
@@ -18,7 +20,9 @@ async function index(req, res) {
             data
         } = await axios.get(`${BASE_URL}?page=2&q=debate&api-key=${API_KEY}`);
         
-        const tweets = await Tweet.find({}).populate('createdBy');
+        const tweets = await Tweet.find({}).populate('createdBy').populate('comments.createdBy')
+
+
         res.render('home/index.ejs', {
             tweets,
             currentUser: req.user,
@@ -61,13 +65,13 @@ async function addTweet(req, res) {
 async function addComments(req, res) {
     try {
         const tweet = await Tweet.findById(req.params.id)
+        req.body.createdBy = req.user._id; 
         tweet.comments.push(req.body)
-        await tweet.save(() => {
-            res.redirect(`/home`)
-        })
+        await tweet.save();
+        res.redirect(`/home`);
     } catch (err) {
-        console.log(err)
-        res.redirect('/home')
+        console.log(err);
+        res.redirect('/home');
     }
 
 }
@@ -92,6 +96,6 @@ async function addLikes(req, res) {
 
     } catch (err) {
         console.log(err)
-        
+
     }
 }

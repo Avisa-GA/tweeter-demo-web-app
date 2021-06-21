@@ -77,9 +77,11 @@
                             <img style="box-shadow: 1px 1px 8px 1px #808080; border-radius: 10px; margin-top: 2%;"
                                 class="materialboxed" width="150" src="<%= tweet.coverPhoto%>">
                             <% tweet.comments.forEach( comment => {%>
-                            <p style="color: darkgray; margin-left: 5%; font-size: small;"><%= currentUser.name%>:
+                            <p style="color: darkgray; margin-left: 5%; font-size: small;"><%= comment.createdBy.name%>
+
                                 <%= comment.content%>
                             </p>
+                            <% console.log(comment.createdBy) %> 
                             <%})%>
                             <!-- TODo add like button here -->
                             <!-- ToDo ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️  -->
